@@ -1,0 +1,9 @@
+Timer precision: 41 ns
+parse                        fastest       │ slowest       │ median        │ mean          │ samples │ iters
+├─ parse_small               1.551 ms      │ 1.738 ms      │ 1.590 ms     │ 1.599 ms      │ 100     │ 100
+├─ parse_medium              930.6 µs      │ 1.104 ms      │ 959.9 µs     │ 967.8 µs      │ 100     │ 100
+╰─ parse_large               309.8 µs      │ 453.3 µs      │ 319.3 µs     │ 321.8 µs      │ 100     │ 100
+transform                    fastest       │ slowest       │ median        │ mean          │ samples │ iters
+├─ transform_small           1.506 ms      │ 1.978 ms      │ 1.533 ms     │ 1.551 ms      │ 100     │ 100
+├─ transform_medium          700.9 µs      │ 801.5 µs      │ 707.7 µs     │ 712.8 µs      │ 100     │ 100
+╰─ transform_large           309.8 µs      │ 399.9 µs      │ 312.6 µs     │ 318.0 µs      │ 100     │ 100

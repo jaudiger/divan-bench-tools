@@ -1,0 +1,19 @@
+line-length = 120
+target-version = "py314"
+
+[lint]
+select = ["ALL"]
+ignore = [
+    "COM812",  # Conflicts with the formatter
+    "D203",    # Incompatible with D211 (no-blank-line-before-class)
+    "D213",    # Incompatible with D212 (multi-line-summary-first-line)
+    "EM102",   # f-string in exception — acceptable in CLI scripts
+    "T201",    # print() — idiomatic for CLI scripts
+    "TRY003",  # Long exception message — acceptable in CLI scripts
+]
+
+[lint.per-file-ignores]
+"tests/**/*.py" = [
+    "D",        # No docstrings required in tests
+    "PT",       # Not using pytest
+]

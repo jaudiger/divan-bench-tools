@@ -1,0 +1,37 @@
+name: Continuous Integration - Static Analysis
+
+on:
+  push:
+    paths:
+      - ".github/workflows/static-analysis.yml"
+      - "**/*.py"
+      - "ruff.toml"
+  pull_request:
+    paths:
+      - ".github/workflows/static-analysis.yml"
+      - "**/*.py"
+      - "ruff.toml"
+  workflow_dispatch:
+
+concurrency:
+  group: static-analysis-${{ github.ref_name }}
+  cancel-in-progress: true
+
+jobs:
+  static-analysis:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6.0.2
+
+      - name: Install Brioche
+        uses: brioche-dev/setup-brioche@v1.5.0
+
+      - name: Install ruff
+        run: brioche install -r ruff
+
+      - name: Check formatting
+        run: ruff format --check .
+
+      - name: Check linting
+        run: ruff check .

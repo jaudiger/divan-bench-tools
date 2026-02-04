@@ -1,0 +1,38 @@
+[
+  {
+    "name": "parse/parse_small",
+    "mean": {"value": 1550000, "unit": "ns"},
+    "median": {"value": 1540000, "unit": "ns"},
+    "fastest": {"value": 1500000, "unit": "ns"},
+    "slowest": {"value": 1700000, "unit": "ns"},
+    "samples": 100,
+    "iters": 100
+  },
+  {
+    "name": "parse/parse_large",
+    "mean": {"value": 360000, "unit": "ns"},
+    "median": {"value": 355000, "unit": "ns"},
+    "fastest": {"value": 340000, "unit": "ns"},
+    "slowest": {"value": 500000, "unit": "ns"},
+    "samples": 100,
+    "iters": 100
+  },
+  {
+    "name": "transform/transform_small",
+    "mean": {"value": 1551000, "unit": "ns"},
+    "median": {"value": 1533000, "unit": "ns"},
+    "fastest": {"value": 1506000, "unit": "ns"},
+    "slowest": {"value": 1978000, "unit": "ns"},
+    "samples": 100,
+    "iters": 100
+  },
+  {
+    "name": "transform/transform_new",
+    "mean": {"value": 500000, "unit": "ns"},
+    "median": {"value": 490000, "unit": "ns"},
+    "fastest": {"value": 480000, "unit": "ns"},
+    "slowest": {"value": 550000, "unit": "ns"},
+    "samples": 100,
+    "iters": 100
+  }
+]

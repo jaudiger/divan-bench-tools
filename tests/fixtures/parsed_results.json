@@ -1,0 +1,128 @@
+[
+  {
+    "name": "parse/parse_small",
+    "fastest": {
+      "value": 1551000,
+      "unit": "ns"
+    },
+    "slowest": {
+      "value": 1738000,
+      "unit": "ns"
+    },
+    "median": {
+      "value": 1590000,
+      "unit": "ns"
+    },
+    "mean": {
+      "value": 1599000,
+      "unit": "ns"
+    },
+    "samples": 100,
+    "iters": 100
+  },
+  {
+    "name": "parse/parse_medium",
+    "fastest": {
+      "value": 930600,
+      "unit": "ns"
+    },
+    "slowest": {
+      "value": 1104000,
+      "unit": "ns"
+    },
+    "median": {
+      "value": 959900,
+      "unit": "ns"
+    },
+    "mean": {
+      "value": 967800,
+      "unit": "ns"
+    },
+    "samples": 100,
+    "iters": 100
+  },
+  {
+    "name": "parse/parse_large",
+    "fastest": {
+      "value": 309800,
+      "unit": "ns"
+    },
+    "slowest": {
+      "value": 453300,
+      "unit": "ns"
+    },
+    "median": {
+      "value": 319300,
+      "unit": "ns"
+    },
+    "mean": {
+      "value": 321800,
+      "unit": "ns"
+    },
+    "samples": 100,
+    "iters": 100
+  },
+  {
+    "name": "transform/transform_small",
+    "fastest": {
+      "value": 1506000,
+      "unit": "ns"
+    },
+    "slowest": {
+      "value": 1978000,
+      "unit": "ns"
+    },
+    "median": {
+      "value": 1533000,
+      "unit": "ns"
+    },
+    "mean": {
+      "value": 1551000,
+      "unit": "ns"
+    },
+    "samples": 100,
+    "iters": 100
+  },
+  {
+    "name": "transform/transform_medium",
+    "fastest": {
+      "value": 700900,
+      "unit": "ns"
+    },
+    "slowest": {
+      "value": 801500,
+      "unit": "ns"
+    },
+    "median": {
+      "value": 707700,
+      "unit": "ns"
+    },
+    "mean": {
+      "value": 712800,
+      "unit": "ns"
+    },
+    "samples": 100,
+    "iters": 100
+  },
+  {
+    "name": "transform/transform_large",
+    "fastest": {
+      "value": 309800,
+      "unit": "ns"
+    },
+    "slowest": {
+      "value": 399900,
+      "unit": "ns"
+    },
+    "median": {
+      "value": 312600,
+      "unit": "ns"
+    },
+    "mean": {
+      "value": 318000,
+      "unit": "ns"
+    },
+    "samples": 100,
+    "iters": 100
+  }
+]
