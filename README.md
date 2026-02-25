@@ -1,6 +1,6 @@
 # Divan Bench Tools
 
-## Instructions
+## Getting Started
 
 This repository provides two Python scripts for processing and comparing [Divan](https://github.com/nvzqz/divan) benchmark results. They are designed to detect performance regressions and generate human-readable reports.
 
@@ -35,16 +35,3 @@ Options:
 - `--warn-threshold`: Threshold for warning indicator (default: `5.0%`)
 - `--error-threshold`: Threshold for regression indicator (default: `10.0%`)
 - `--subtitle`: Optional subtitle displayed below the title
-
-## CI / CD
-
-The CI/CD pipeline is configured using GitHub Actions. The workflow is defined in the [`.github/workflows`](.github/workflows) folder:
-
-- Static Analysis (source code, GitHub Actions)
-- Tests
-
-Additionally, Dependabot is configured to automatically update dependencies (GitHub Actions).
-
-## Repository configuration
-
-The settings of this repository are managed from the [gitops-deployments](https://github.com/jaudiger/gitops-deployments) repository using Terraform. The actual configuration applied is located in the Terraform module [`modules/github-repository`](https://github.com/jaudiger/gitops-deployments/tree/main/modules/github-repository).
