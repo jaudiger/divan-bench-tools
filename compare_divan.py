@@ -165,7 +165,7 @@ def load_benchmarks(file_path: str | Path, metric: str) -> dict[str, dict[str, A
 
 def get_benchmark_group(name: str) -> str:
     """Extract the main group from a benchmark name."""
-    return name.split("/")[0] if "/" in name else name
+    return name.split("/", maxsplit=1)[0] if "/" in name else name
 
 
 def format_group_name(group: str) -> str:
@@ -187,7 +187,7 @@ def format_table_row(comparison: BenchmarkComparison, display_name: str | None =
         display_name: Optional name to display instead of comparison.name.
 
     """
-    name = display_name if display_name else comparison.name
+    name = display_name or comparison.name
     base_str = format_time(comparison.base)
     pr_str = format_time(comparison.pr)
 
