@@ -18,7 +18,22 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  static-analysis:
+  python-lint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6.0.2
+
+      - name: Install Brioche
+        uses: brioche-dev/setup-brioche@v1.5.0
+
+      - name: Install ruff
+        run: brioche install -r ruff
+
+      - name: Check linting
+        run: ruff check .
+
+  python-format:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -32,6 +47,3 @@ jobs:
 
       - name: Check formatting
         run: ruff format --check .
-
-      - name: Check linting
-        run: ruff check .
