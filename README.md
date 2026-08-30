@@ -4,6 +4,20 @@
 
 This repository provides two Python scripts for processing and comparing [Divan](https://github.com/nvzqz/divan) benchmark results. They are designed to detect performance regressions and generate human-readable reports.
 
+Install the project and development dependencies with [uv](https://docs.astral.sh/uv/):
+
+```sh
+uv sync
+```
+
+Run the test suite and development checks with uv:
+
+```sh
+uv run --locked python -m unittest discover -s tests -v
+uv run --locked ruff format --check .
+uv run --locked ruff check .
+```
+
 ### Scripts
 
 #### `parse_divan.py`

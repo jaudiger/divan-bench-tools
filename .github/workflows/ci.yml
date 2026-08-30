@@ -30,6 +30,8 @@ jobs:
           filters: |
             python:
               - '**/*.py'
+              - 'pyproject.toml'
+              - 'uv.lock'
               - 'ruff.toml'
               - 'tests/fixtures/**'
               - '.github/workflows/ci.yml'
@@ -39,19 +41,17 @@ jobs:
   lint-python:
     needs: changes
     if: needs.changes.outputs.python == 'true'
-    uses: jaudiger/reusable-workflows/.github/workflows/static-analysis-python.yml@8104be620dc861697cf02b53d8fe3119edece0b5
+    uses: jaudiger/reusable-workflows/.github/workflows/static-analysis-python.yml@0fdb4286768192eacc11e2a71d0ef74fcd1c3195
 
   test-python:
     needs: changes
     if: needs.changes.outputs.python == 'true'
-    uses: jaudiger/reusable-workflows/.github/workflows/tests-python.yml@8104be620dc861697cf02b53d8fe3119edece0b5
-    with:
-      python-version: "3.14"
+    uses: jaudiger/reusable-workflows/.github/workflows/tests-python.yml@0fdb4286768192eacc11e2a71d0ef74fcd1c3195
 
   lint-actions:
     needs: changes
     if: needs.changes.outputs.workflows == 'true'
-    uses: jaudiger/reusable-workflows/.github/workflows/static-analysis-github-actions.yml@8104be620dc861697cf02b53d8fe3119edece0b5
+    uses: jaudiger/reusable-workflows/.github/workflows/static-analysis-github-actions.yml@0fdb4286768192eacc11e2a71d0ef74fcd1c3195
 
   ci:
     if: always()
