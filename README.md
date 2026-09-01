@@ -16,6 +16,7 @@ Run the test suite and development checks with uv:
 uv run --locked python -m unittest discover -s tests -v
 uv run --locked ruff format --check .
 uv run --locked ruff check .
+uv run --locked ty check .
 ```
 
 ### Scripts
