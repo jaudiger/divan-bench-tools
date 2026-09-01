@@ -12,7 +12,7 @@ import sys
 from dataclasses import dataclass
 from enum import Enum
 from pathlib import Path
-from typing import Any
+from typing import Any, TypeGuard
 
 NS_PER_US = 1_000
 NS_PER_MS = 1_000_000
@@ -105,6 +105,11 @@ def get_change_indicator(
     return ""
 
 
+def _is_string_keyed_dict(value: object) -> TypeGuard[dict[str, Any]]:
+    """Return whether a value is a JSON object with string keys."""
+    return isinstance(value, dict) and all(isinstance(key, str) for key in value)
+
+
 def validate_benchmark_entry(entry: dict[str, Any], file_path: Path, index: int, metric: str) -> None:
     """Validate a single benchmark entry has required fields.
 
@@ -153,14 +158,21 @@ def load_benchmarks(file_path: str | Path, metric: str) -> dict[str, dict[str, A
         sys.exit(1)
 
     # Validate each entry
+    benchmarks: dict[str, dict[str, Any]] = {}
     for index, entry in enumerate(data):
+        if not _is_string_keyed_dict(entry):
+            print(f"Error: Entry {index} in '{path}' is not a JSON object", file=sys.stderr)
+            sys.exit(1)
+
         try:
             validate_benchmark_entry(entry, path, index, metric)
         except ValueError as e:
             print(f"Error: {e}", file=sys.stderr)
             sys.exit(1)
 
-    return {item["name"]: item for item in data}
+        benchmarks[entry["name"]] = entry
+
+    return benchmarks
 
 
 def get_benchmark_group(name: str) -> str:

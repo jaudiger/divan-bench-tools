@@ -33,6 +33,24 @@ COLUMN_SPLIT_PATTERN = re.compile(r"\s*│\s*")
 EXPECTED_COLUMN_COUNT = 6
 
 
+def _match_group(match: re.Match[str], index: int) -> str:
+    """Return a regex capture as text."""
+    value = match.group(index)
+    if not isinstance(value, str):
+        raise TypeError
+    return value
+
+
+def _split_columns(value: str) -> list[str]:
+    """Split a Divan row into text columns."""
+    columns: list[str] = []
+    for column in COLUMN_SPLIT_PATTERN.split(value):
+        if not isinstance(column, str):
+            raise TypeError
+        columns.append(column)
+    return columns
+
+
 @dataclass
 class TimeValue:
     """Represents a time measurement with value in nanoseconds."""
@@ -114,8 +132,8 @@ def parse_time_to_ns(time_str: str) -> int | None:
     if not match:
         return None
 
-    value = float(match.group(1))
-    unit = match.group(2)
+    value = float(_match_group(match, 1))
+    unit = _match_group(match, 2)
 
     multipliers: dict[str, int] = {
         "ns": 1,
@@ -165,11 +183,11 @@ def parse_line(line: str, current_group: str, current_subgroup: str) -> Benchmar
     if not match:
         return None
 
-    bench_name = match.group(1)
-    rest = match.group(2)
+    bench_name = _match_group(match, 1)
+    rest = _match_group(match, 2)
 
     # Split by │ to get timing columns
-    columns = COLUMN_SPLIT_PATTERN.split(rest)
+    columns = _split_columns(rest)
     if len(columns) < EXPECTED_COLUMN_COUNT:
         return None
 
@@ -214,7 +232,7 @@ def _extract_group_from_header(line: str) -> str | None:
         The group name, or None if no group name found.
 
     """
-    parts = COLUMN_SPLIT_PATTERN.split(line)
+    parts = _split_columns(line)
     if not parts:
         return None
     first_part = parts[0].strip()
@@ -233,7 +251,7 @@ def _extract_group_from_plain_line(line: str) -> str | None:
         The group name, or None if the line is not a group header.
 
     """
-    parts = COLUMN_SPLIT_PATTERN.split(line)
+    parts = _split_columns(line)
     if len(parts) > 1 and parse_time_to_ns(parts[1]):
         return None
     stripped = line.strip()
@@ -300,7 +318,10 @@ def read_input(path: str) -> str:
 
     """
     if path == "-":
-        return sys.stdin.read()
+        content = sys.stdin.read()
+        if not isinstance(content, str):
+            raise TypeError
+        return content
     return Path(path).read_text()
 
 
