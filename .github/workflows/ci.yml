@@ -33,6 +33,7 @@ jobs:
               - 'pyproject.toml'
               - 'uv.lock'
               - 'ruff.toml'
+              - 'ty.toml'
               - 'tests/fixtures/**'
               - '.github/workflows/ci.yml'
             workflows:
