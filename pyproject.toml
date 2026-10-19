@@ -2,7 +2,7 @@
 name = "divan-bench-tools"
 version = "0.1.0"
 description = "Parse and compare Divan benchmark results."
-requires-python = ">=3.14,<3.15"
+requires-python = ">=3.15,<3.16"
 dependencies = []
 
 [dependency-groups]
